@@ -1,0 +1,45 @@
+{% set data = load_setup_py_data() %}
+{% set version = data.get('version') or 'placehold' %}
+
+package:
+  name: q2-my_plugin
+  version: {{ version }}
+
+source:
+  path: ../..
+
+build:
+  script: make install
+
+requirements:
+  host:
+    - python {{ python }}
+    - setuptools
+  run:
+    - quast
+    - beautifulsoup4
+    - biopython <=1.78
+    - bowtie2 ==2.4.4
+    - samtools
+    - insilicoseq
+    - megahit ==1.2.9
+    - qiime2 {{ qiime2_epoch }}.*
+    - q2-types-genomics {{ qiime2_epoch }}.*
+    - q2templates {{ qiime2_epoch }}.*
+    - samtools
+    - spades ==3.15.2
+
+test:
+  requires:
+    - coverage
+    - pytest-cov
+  imports:
+    - q2_my_plugin_name
+    - qiime2.plugins.my_plugin
+  commands:
+    - pytest --cov q2_my_plugin_name --pyargs q2_my_plugin_name
+
+about:
+  home: https://github.com/bokulich-lab/q2-my_plugin
+  license: BSD-3-Clause
+  license_family: BSD
