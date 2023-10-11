@@ -25,11 +25,8 @@ import time
 # A description
 def stats(
     seqs: DNAFASTAFormat,
-    cpus: int = 1,
     debug: bool = False,
-    seed: int = 0,
 ) -> (DNAFASTAFormat):
-
 
     with tempfile.TemporaryDirectory() as tmp:
         if seqs:
