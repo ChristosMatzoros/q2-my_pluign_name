@@ -1,8 +1,4 @@
 # q2-my_plugin
-![CI](https://github.com/bokulich-lab/q2-my_plugin/actions/workflows/ci.yml/badge.svg)
-[![codecov](https://codecov.io/gh/bokulich-lab/q2-my_plugin/branch/main/graph/badge.svg?token=THMBOFUZR0)](https://codecov.io/gh/bokulich-lab/q2-my_plugin)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
 QIIME 2 plugin for (meta)genome my_plugin.
 
 ## Installation
@@ -23,20 +19,7 @@ qiime info
 ```
 
 ## Functionality
-This QIIME 2 plugin contains actions used to assemble (meta)genomes from short single/paired-end
-sequencing reads. Currently, two assemblers are supported: SPAdes and MEGAHIT (for details on
-the implementation and usage, please refer to the respective documentation). Below you will
-find an overview of actions available in the plugin.
 
-| Action               | Description                                                | Underlying tool                                        |
-|----------------------|------------------------------------------------------------|--------------------------------------------------------|
-| assemble-megahit     | Assemble contigs using MEGAHIT.                            | [MEGAHIT](https://github.com/voutcn/megahit)           |
-| assemble-spades      | Assemble contigs using SPAdes.                             | [SPAdes](https://github.com/ablab/spades)              |
-| evaluate-contigs     | Evaluate quality of the assembled contigs using metaQUAST. | [QUAST](https://github.com/ablab/quast)                |
-| generate-reads       | Simulate NGS reads using InSilicoSeq.                      | [InSilicoSeq](https://github.com/HadrienG/InSilicoSeq) |
-| index-contigs        | Index contigs using Bowtie 2.                              | [Bowtie 2](https://github.com/BenLangmead/bowtie2)     |
-| index-mags           | Index MAGs using Bowtie 2.                                 | [Bowtie 2](https://github.com/BenLangmead/bowtie2)     |
-| map-reads-to-contigs | Map reads to contigs using Bowtie 2.                       | [Bowtie 2](https://github.com/BenLangmead/bowtie2)     |
 
 ## Dev environment
 This repository follows the _black_ code style. To make the development slightly easier
