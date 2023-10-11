@@ -6,11 +6,6 @@
 # The full license is in the file LICENSE, distributed with this software.
 # ----------------------------------------------------------------------------
 
-from ._version import get_versions
-from .apply_statistics import apply_statistics
-from .apply_visualizer import apply_visualizer
+from .apply_visualizer import visualizer_function
 
-__version__ = get_versions()["version"]
-del get_versions
-
-__all__ = ["apply_statistics", "apply_visualizer"]
+__all__ = ["visualizer_function"]

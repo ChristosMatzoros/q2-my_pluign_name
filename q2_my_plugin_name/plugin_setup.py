@@ -5,21 +5,15 @@
 #
 # The full license is in the file LICENSE, distributed with this software.
 # ----------------------------------------------------------------------------
-import importlib
-
-import qiime2.plugin
-
 from q2_types.feature_data import FeatureData, Sequence
-from q2_types.feature_table import FeatureTable, Frequency
-
-from q2_types_genomics.per_sample_data._type import AlignmentMap
-from qiime2.plugin import Citations, Plugin, Str
+from q2_types.sample_data import AlphaDiversity, SampleData
+from qiime2.plugin import Citations, Metadata, Plugin
 
 import q2_my_plugin_name
 from q2_my_plugin_name import __version__
 from q2_my_plugin_name._action_params import (
     apply_statistics_param_descriptions,
-    apply_statistics_params
+    apply_statistics_params,
 )
 
 citations = Citations.load("citations.bib", package="q2_my_plugin_name")
@@ -40,39 +34,23 @@ plugin.methods.register_function(
     inputs={"seqs": FeatureData[Sequence]},
     parameters=apply_statistics_params,
     outputs=[
-            ("out1", FeatureData[Sequence]),
-        ],
+        ("out1", FeatureData[Sequence]),
+    ],
     input_descriptions={
         "seqs": "Input (Input_FeatureDataSequence) of type FeatureData[Sequence] "
     },
     parameter_descriptions=apply_statistics_param_descriptions,
-    output_descriptions={
-        "out1": "Manipulated file."
-    },
+    output_descriptions={"out1": "Manipulated file."},
     name="Name that describes my plugin method",
-    description="This sample function can be used as a template for a plugin method implementation.",
-    citations=[citations["Gourle2019"]],
+    description="Sample function that can be used as a template.",
 )
 
-"""
 plugin.visualizers.register_function(
-    function=q2_my_plugin_name.apply_statistics.myPluginVisualization,
-    inputs={'distance_matrix': DistanceMatrix},
-    parameters={'metadata': Metadata},
-    input_descriptions={
-        'distance_matrix': 'Matrix of distances between pairs of samples.'
-    },
-    parameter_descriptions={
-        'metadata': 'The sample metadata.'
-    },
-    name='bioenv',
-    description=("Find the subsets of variables in metadata whose Euclidean "
-                 "distances are maximally rank-correlated with distance "
-                 "matrix. All numeric variables in metadata will be "
-                 "considered, and samples which are missing data will be "
-                 "dropped. The output visualization will indicate how many "
-                 "samples were dropped due to missing data, if any were "
-                 "dropped."),
-    citations=[citations['clarke1993method']]
+    function=q2_my_plugin_name.apply_visualizer.visualizer_function,
+    inputs={"visualizer_input": SampleData[AlphaDiversity]},
+    parameters={"metadata": Metadata},
+    input_descriptions={"visualizer_input": "Input fpr yhr visualizer function."},
+    parameter_descriptions={"metadata": "The sample metadata."},
+    name="Alpha diversity comparisons",
+    description=("Visually do something."),
 )
-"""

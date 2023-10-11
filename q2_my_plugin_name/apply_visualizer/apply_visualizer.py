@@ -5,12 +5,11 @@
 #
 # The full license is in the file LICENSE, distributed with this software.
 # ----------------------------------------------------------------------------
+import pandas as pd
+import qiime2
 
-from ._version import get_versions
-from .apply_statistics import apply_statistics
-from .apply_visualizer import apply_visualizer
 
-__version__ = get_versions()["version"]
-del get_versions
-
-__all__ = ["apply_statistics", "apply_visualizer"]
+def visualizer_function(
+    output_dir: str, visualizer_input: pd.Series, metadata: qiime2.Metadata
+) -> None:
+    pass
